@@ -1,18 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var todos = require('../data/todos');
+var fruits = require('../data/fruits');
 
 router.get('/', function (req, res) {
-	res.render('index', { todos });
+	res.render('index', { fruits });
 });
 
-router.post('/todos', function (req, res) {
-	todos.push({ todo: req.body.todo, done: false });
-	res.redirect('/');
-});
-
-router.delete('/todos/:idx', function (req, res) {
-	todos.splice(req.params.idx, 1);
+router.post('/fruits', function (req, res) {
+	fruits.push(req.body.fruit);
 	res.redirect('/');
 });
 
